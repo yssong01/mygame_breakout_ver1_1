@@ -1,4 +1,5 @@
-https://github.com/user-attachments/assets/426ddfb3-c1d9-4611-8bb4-8f6b37d13c8f
+https://github.com/user-attachments/assets/ff6b245d-82bc-4b69-be3b-b8930adfa451
+
 
 [게임] 벽돌깨기 (Break out)
 
