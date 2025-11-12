@@ -1,12 +1,13 @@
 https://github.com/user-attachments/assets/ff6b245d-82bc-4b69-be3b-b8930adfa451
 
 
-[게임] 벽돌깨기 (Break out)
+[게임] 벽돌깨기 (Breakout)
 
 벽돌깨기를 한 번도 못해본 사람은 있어도, 결코 한 번만 해본 사람은 없다!
 
 1. 게임 소개
-> 막대기(Paddle)을 움직이면서 공을 받아 쳐내어 벽돌을 깨뜨리는 게임입니다.
+> Python + Pygram 기반 벽돌깨기 게임(Breakout OOP Edition)
+- 막대기(Paddle)를 좌우로 움직이면서 공을 받아 쳐내어 벽돌을 깨뜨리는 게임입니다.
 
 2. 게임 방법
 > 사용키
