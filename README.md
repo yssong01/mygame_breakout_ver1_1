@@ -5,7 +5,7 @@ https://github.com/user-attachments/assets/ff6b245d-82bc-4b69-be3b-b8930adfa451
 벽돌깨기를 한 번도 못해본 사람은 있어도, 결코 한 번만 해본 사람은 없다!
 
 
-###1. 게임 소개 및 프로젝트 개요
+#1. 게임 소개 및 프로젝트 개요
 
 > 이 프로젝트는 ChatGPT5를 활용하여 VScode program을 이용하여 Pygame으로 만든 오브젝트 지향 프로그래밍(OOP) 구조에 기반한 벽돌깨기 게임입니다.
 
@@ -17,7 +17,7 @@ https://github.com/user-attachments/assets/ff6b245d-82bc-4b69-be3b-b8930adfa451
 - 공의 공격력(ATK), 공의 속도(SPD), 막대기 크기, 벽돌의 hp, 아이템 회득, 막대기의 총알 발사(SHOOT)에 변화를 주는 아이템 획득 기능과 효과음, 배경음을 추가하여 재미를 더하였습니다.
 
 
-###2. 게임 방법
+#2. 게임 방법
 
 > 사용키
 
@@ -41,7 +41,7 @@ https://github.com/user-attachments/assets/ff6b245d-82bc-4b69-be3b-b8930adfa451
 - Score, Lives, ATK, Speed, Shooting의 현재 상태
 
 
-###3. 효과음, 배경음
+#3. 효과음, 배경음
 
 > 효과음 출처 : Royalty-free sound effects for download
 
@@ -52,7 +52,7 @@ https://github.com/user-attachments/assets/ff6b245d-82bc-4b69-be3b-b8930adfa451
 - https://audio.com/manish-shirodkar/audio/janji-johnning-heroes-tonight-feat-johnning-ncs-release
 
 
-###4. 핵심 OOP 구조를 기반으로 게임을 구현.
+#4. 핵심 OOP 구조를 기반으로 게임을 구현.
 
 이 게임의 전체 구조는 Game class가 중심(core) 역할로서 모든 객체를 생성하고, 각 클래스는 자신의 역할만 책임지는 구조입니다. 따라서 이러한 OOP 설계 덕분에, 현재 없는 기능인 “보스 벽돌” 같은 새로운 클래스를 추가하더라도
 Level과 Game.update() 일부에서만 수정하면 손쉽게 게임 기능 확장이 가능합니다.
@@ -106,14 +106,14 @@ Level과 Game.update() 일부에서만 수정하면 손쉽게 게임 기능 확�
 - Game에서 충돌, 파괴, 아이템 획득, 게임오버, 클리어 등 상황별로 호출합니다.
 
 
-###5. Summary : 왜 이러한 OOP 구조로 게임을 구현했는가?
+#5. Summary : 왜 이러한 OOP 구조로 게임을 구현했는가?
 
 > 게임의 전체 기능이 정상적으로 수행되도록 각 클래스의 역할을 '구분'하고 또한 서로 method call로 연결되도록 하여 클래스의 수정, 추가, 확장 등의 작업이 용이하도록 하였다.
 
 - 각 클래스의 기능들, 즉 게임 규칙(언제 점수를 올릴지, 언제 아이템을 줄지, 언제 게임오버 등)이 Game 클래스에서 코드 작동을 파악하기 용이합니다.
 - 이는 유지보수 및 버전 업 작업에 유리한 장기적인 안목을 반영하는 연습을 할 수 있는 좋은 예제로써, 즉 앞으로 새로운 기능(보스 벽돌, 다른 종류의 총알, 새로운 파워업 등)을 추가할 때도 관련 클래스를 추가/확장하고 Game.update()와 apply_powerup() 등 에서만 최소한으로 method call하여 연결해 주면 됩니다.
 
-6. Version : ver1_1
+#6. Version : ver1_1
 
 - 'ver1' : 큰 틀에서 oop구조의 버전을 의미합니다.
 - '\_1' : (거의) 동일한 oop구조에서의 유지보수된 버전을 의미합니다.
