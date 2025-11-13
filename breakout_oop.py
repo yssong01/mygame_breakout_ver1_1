@@ -1,14 +1,35 @@
 """
-벽돌깨기 게임 만들기
-Breakout HP Numbers, Ball ATK HUD, and Shooting Power-up (OOP, Beginner Friendly)
+Breakout_oop_ver1_1
 
-- 벽돌: HP가 있으며 중앙에 HP 숫자를 그려줌
-- HUD: Score, Lives, Ball ATK(공 공격력), Speed, Shooting 남은 시간 표기
-- 아이템:
+Python으로 '벽돌깨기 게임' 만들기 (OOP 구조 기반, VScode 프로그램 + Pygame)
+Breakout HP Numbers, Ball ATK HUD, and Shooting Power-up (OOP, user friendly version)
+
+> 사용키
+
+- 시작 : 좌우 방향키 아무거나 누르면 게임 시작.
+- 좌우 방향키 : 막대기(Paddle) 좌우 이동.
+- F 키 : 막대기에서 총알 발사 -> 벽돌 파괴 가능, [SH] 아이템 필수.
+- Space 키 : 일시정지(Pause).
+
+> 아이템 설명 (벽돌을 깨뜨리면 무작위로 아이탬이 나온다.)
+
+- 공의 공격력 강화 : [A+]
+- 공의 공격력 약화 : [A-]
+- 공의 스피드 상승 : [S+]
+- 공의 스피드 하락 : [S-]
+- 막대기 길이 확장 : [P+]
+- 막대기 길이 축소 : [P-]
+- 막대기 총알 발사 : [SH]
+
   * ATK_UP / ATK_DOWN     : 공의 공격력(지속)
   * PAD_EXPAND / PAD_SHRINK: 패들 길이(타임드)
   * SPD_UP / SPD_DOWN     : 공 속도(타임드)
   * SHOOT                 : 일정 시간 동안 Space로 총알 발사 가능 (쿨다운 적용)
+
+> 참고 사항
+- 벽돌: HP가 있음. 벽돌 중앙에 HP 표시 (1 ~ 9)
+- 스크린 상단에 HUD 표시: Score, Lives, Ball ATK, Speed, Shooting 남은 시간 표기
+- 아이템:
 """
 
 import pygame, sys, random, math
@@ -102,7 +123,7 @@ class Paddle:
                 ),
             )
         else:
-            # 🎉 항상 표시되는 "Enjoy Python" 문구
+            # 항상 표시되는 "Enjoy Python" 문구
             if font:
                 enjoy = font.render("Enjoy Python", True, (255, 255, 200))
                 screen.blit(
@@ -419,7 +440,7 @@ class Game:
         self.clock = pygame.time.Clock()
 
         # pygame.init() 이전에 PowerUp() 객체가 생성되면 오류 발생.
-        # 다행히 현재는 pygame.init()이 Game.__init__에서 먼저 호출되므로 문제는 없음.
+        # 현재는 pygame.init()이 Game.__init__에서 먼저 호출되므로 문제는 없음.
         # 다른 파일에서 PowerUp만 테스트할 경우를 대비해 pygame.font.get_init() 체크 추가 권장:
         if not pygame.font.get_init():
             pygame.font.init()
@@ -448,7 +469,7 @@ class Game:
         self.shoot_timer = 0.0
         self.shoot_cooldown = 0.0
         self.shoot_interval = 0.25
-        self.bullets = []              # 여기가 중요!
+        self.bullets = []   # <-여기가 중요!
         self.bullet_damage = 1
 
         # 그 다음에 reset() 호출
@@ -456,6 +477,7 @@ class Game:
 
         # 아이템 효과를 적용하는 단일 진입점
     def apply_powerup(self, p):
+
         # ── 1) 종류별 효과
         if p.kind == ATK_UP:
             self.ball.set_damage(self.ball.damage + 1)
@@ -495,7 +517,6 @@ class Game:
         self.shoot_cooldown = 0.0
         self.bullets = []          # reassign (clear보다 안전)
         self.bullet_damage = 1
-
         # 공을 패들에 붙여 시작
         self.ball_stuck = True
 
@@ -541,16 +562,6 @@ class Game:
                 # R 키 = 재시작
                 if ev.key == pygame.K_r and (self.game_over or self.clear):
                     self.reset()
-
-                # if ev.key == pygame.K_SPACE:
-                #     if self.can_shoot and not (self.game_over or self.clear):
-                #         self.try_fire_bullet()
-                #     else:
-                #         # SHOOT 비활성화 상태면 Space는 일시정지 토글
-                #         if not (self.game_over or self.clear):
-                #             self.paused = not self.paused
-                # if ev.key == pygame.K_r and (self.game_over or self.clear):
-                #     self.reset()
 
     def try_fire_bullet(self):
         """쿨다운을 고려하여 탄 1발 발사."""
@@ -694,34 +705,6 @@ class Game:
 
         self.powerups = new_list
 
-        # for p in list(self.powerups):
-        #     # 기존 아이템 충돌 처리 블록만 남김
-        #     if p.rect.colliderect(self.paddle.rect):
-        #         # ── 1) 종류별 효과 적용
-        #         if p.kind == ATK_UP:
-        #             self.ball.set_damage(self.ball.damage + 1)
-        #         elif p.kind == ATK_DOWN:
-        #             self.ball.set_damage(self.ball.damage - 1)
-        #         elif p.kind == PAD_EXPAND:
-        #             self.paddle.scale_width(factor=1.6, duration=10.0)
-        #         elif p.kind == PAD_SHRINK:
-        #             self.paddle.scale_width(factor=0.7, duration=10.0)
-        #         elif p.kind == SPD_UP:
-        #             self.ball.apply_speed_buff(factor=1.25, duration=8.0)
-        #         elif p.kind == SPD_DOWN:
-        #             self.ball.apply_speed_buff(factor=0.75, duration=8.0)
-        #         elif p.kind == SHOOT:
-        #             # 슈팅 권한 부여/갱신
-        #             self.can_shoot = True
-        #             # 중첩 획득 시 남은 시간 연장
-        #             self.shoot_timer = max(self.shoot_timer, 10.0)
-
-        #         # ── 2) 공통 처리: 화면에서 제거 + 획득 사운드
-        #         self.powerups.remove(p)
-        #         # 아이템 획득 사운드
-        #         self.sfx.play(self.sfx.item_get)
-        #         continue  # 이 아이템에 대한 추가 처리 방지
-
         # 공이 바닥으로 떨어지면 라이프 감소
         if self.ball.rect.top > HEIGHT:
             self.lives -= 1
@@ -837,6 +820,5 @@ if __name__ == "__main__":
 
 
 # 실행 방법
-# cmd 에서 python breakout_oop.py
+# cmd 에서 python breakout_oop.py 실행
 # 또는 breakout_oop.py 현재 창에 커서를 띄우고 ctrl + enter
-
