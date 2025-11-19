@@ -1,6 +1,6 @@
 https://github.com/user-attachments/assets/ff6b245d-82bc-4b69-be3b-b8930adfa451
 
-[게임] 벽돌깨기 (Breakout)
+## [게임] 벽돌깨기 (Breakout)
 
 벽돌깨기를 한 번도 못해본 사람은 있어도, 결코 한 번만 해본 사람은 없다!
 
