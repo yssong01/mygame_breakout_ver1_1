@@ -8,7 +8,6 @@ https://github.com/user-attachments/assets/ff6b245d-82bc-4b69-be3b-b8930adfa451
 [![Pygame](https://img.shields.io/badge/Pygame-2.0+-green.svg)](https://www.pygame.org/)
 [![Version](https://img.shields.io/badge/version-1.1-orange.svg)](https://github.com/)
 
-![게임 스크린샷](https://github.com/user-attachments/assets/ff6b245d-82bc-4b69-be3b-b8930adfa451)
 
 ## 📖 프로젝트 소개
 
